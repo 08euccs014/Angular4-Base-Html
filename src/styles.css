@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #FFFFFF;
+}
+
+.navbar {
+    padding : 20px;
+    color :#3c4859;
+}
+
+.navbar.navbar-inverse {
+    background-color: #9bc1bc;
+    border-color: #9bc1bc;
+}
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-brand {
+    color :#3c4859;
+}
+
+.main-body {
+    margin-top: 100px;
+}
