@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import 'hammerjs';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule } from './material/material.module';
 
 import { Middleware } from './middleware';
 
@@ -10,10 +13,14 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-
-import { AuthService } from './auth.service';
 import { HelpComponent } from './help/help.component';
 
+import { HttpUtil } from './utils/http-request';
+import { AuthService } from './auth.service';
+import { DashboardService } from './dashboard/dashboard.service'
+
+import { SearchfilterPipe } from './pipes/searchfilter.pipe';
+import { UnitConversionPipe } from './pipes/unit-conversion.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent, canActivate:[Middleware]},
@@ -30,7 +37,9 @@ const appRoutes: Routes = [
     SidebarComponent,
     DashboardComponent,
     LoginComponent,
-    HelpComponent
+    HelpComponent,
+    SearchfilterPipe,
+    UnitConversionPipe
   ],
   imports: [
     BrowserModule,
@@ -39,11 +48,15 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       //{ enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     Middleware,
-    AuthService
+    AuthService,
+    HttpUtil,
+    DashboardService
   ],
   bootstrap: [AppComponent]
 })
